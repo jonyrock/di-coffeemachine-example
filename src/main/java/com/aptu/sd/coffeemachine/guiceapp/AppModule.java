@@ -22,7 +22,8 @@ public class AppModule extends AbstractModule {
         List<Product> products = Arrays.asList(new Product("capuccino", 4, 10), new Product("latte", 6, 15));
         bind(new TypeLiteral<List<Product>>() {}).toInstance(products);
 
-        List<Command> commands = Arrays.asList(new Insert(), new Select(), new Cancel(), new Exit());
+        List<Command> commands = Arrays.asList(new Insert(), new Select(), 
+                new Cancel(), new Exit(), new TakeCash());
         bind(new TypeLiteral<List<Command>>() {}).toInstance(commands);
     }
 }

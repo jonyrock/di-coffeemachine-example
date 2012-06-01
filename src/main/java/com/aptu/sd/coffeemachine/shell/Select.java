@@ -12,7 +12,6 @@ import static com.aptu.sd.coffeemachine.shell.CommandUtil.assertArgsLength;
  * Date: 5/23/12, 12:45 AM
  */
 public class Select implements Command {
-    @Override
     public void execute(String[] args, VendingMachine machine) throws CommandParseException {
         assertArgsLength(args, 1);
         String product = args[0];

@@ -11,7 +11,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class SpringApp {
     public static void main( String[] args ) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/aptu/sd/springapp/app-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
+                "com/aptu/sd/springapp/app-context.xml");
         Shell shell = (Shell) applicationContext.getBean("shell");
         shell.run();
     }

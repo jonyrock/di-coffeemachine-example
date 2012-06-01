@@ -31,6 +31,7 @@
     <bean id="select" class="com.aptu.sd.coffeemachine.shell.Select"/>
     <bean id="cancel" class="com.aptu.sd.coffeemachine.shell.Cancel"/>
     <bean id="exit" class="com.aptu.sd.coffeemachine.shell.Exit"/>
+    <bean id="takecash" class="com.aptu.sd.coffeemachine.shell.TakeCash"/>
 
     <bean id="shell"
           class="com.aptu.sd.coffeemachine.shell.Shell">
@@ -41,6 +42,7 @@
                 <ref bean="select"/>
                 <ref bean="cancel"/>
                 <ref bean="exit"/>
+                <ref bean="takecash"/>
             </list>
         </property>
     </bean>

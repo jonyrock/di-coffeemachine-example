@@ -20,7 +20,8 @@ public class App
         machine.setProducts(products);
 
         Shell shell = new Shell();
-        List<Command> commands = Arrays.asList(new Insert(), new Select(), new Cancel(), new Exit());
+        List<Command> commands = Arrays.asList(new Insert(), new Select(), 
+                new Cancel(), new Exit(), new TakeCash());
         shell.setCommands(commands);
         shell.setMachine(machine);
         shell.run();

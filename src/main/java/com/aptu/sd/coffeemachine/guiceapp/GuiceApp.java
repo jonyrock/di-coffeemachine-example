@@ -10,9 +10,9 @@ import com.google.inject.Injector;
  * Date: 5/23/12, 10:07 AM
  */
 public class GuiceApp {
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
         Injector injector = Guice.createInjector(new AppModule());
-        Shell shell =  injector.getInstance(Shell.class);
+        Shell shell = injector.getInstance(Shell.class);
         shell.run();
     }
 }
