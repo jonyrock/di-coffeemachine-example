@@ -11,8 +11,11 @@ import static com.aptu.sd.coffeemachine.shell.CommandUtil.assertArgsLength;
  * User: andrey
  * Date: 5/23/12, 12:45 AM
  */
-public class Select implements Command {
-    public void execute(String[] args, VendingMachine machine) throws CommandParseException {
+public class Select extends AbstractCommand {
+    public Select(VendingMachine m){
+        super(m);
+    }
+    public void execute(String[] args) throws CommandParseException {
         assertArgsLength(args, 1);
         String product = args[0];
         try {

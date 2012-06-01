@@ -7,8 +7,11 @@ import com.aptu.sd.coffeemachine.machine.VendingMachine;
  * User: andrey
  * Date: 5/23/12, 12:40 AM
  */
-public class Exit implements Command {
-    public void execute(String[] args, VendingMachine machine) throws CommandParseException {
+public class Exit extends AbstractCommand {
+    public Exit(VendingMachine m){
+        super(m);
+    }
+    public void execute(String[] args) throws CommandParseException {
         System.exit(0);
     }
 }

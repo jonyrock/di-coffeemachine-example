@@ -7,6 +7,7 @@ import com.aptu.sd.coffeemachine.shell.*;
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,8 +23,9 @@ public class AppModule extends AbstractModule {
         List<Product> products = Arrays.asList(new Product("capuccino", 4, 10), new Product("latte", 6, 15));
         bind(new TypeLiteral<List<Product>>() {}).toInstance(products);
 
-        List<Command> commands = Arrays.asList(new Insert(), new Select(), 
-                new Cancel(), new Exit(), new TakeCash());
-        bind(new TypeLiteral<List<Command>>() {}).toInstance(commands);
+        List<Class<? extends Command>> commands = new ArrayList<Class<? extends Command>>();
+        commands.add(Insert.class);
+        commands.add(Exit.class);
+        bind(new TypeLiteral<List<Class<? extends Command>>>() {}).toInstance(commands);
     }
 }

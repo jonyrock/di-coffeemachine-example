@@ -10,8 +10,11 @@ import static com.aptu.sd.coffeemachine.shell.CommandUtil.assertArgsLength;
  * User: andrey
  * Date: 5/23/12, 12:01 AM
  */
-public class Insert implements Command {
-    public void execute(String[] args, VendingMachine machine) throws CommandParseException {
+public class Insert extends AbstractCommand {
+    public Insert(VendingMachine m){
+        super(m);
+    }
+    public void execute(String[] args) throws CommandParseException {
         assertArgsLength(args, 1);
         try {
             long amount = Long.parseLong(args[0].trim());
