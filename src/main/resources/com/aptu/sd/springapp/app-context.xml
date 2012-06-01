@@ -27,11 +27,11 @@
     </bean>
 
     <!-- Commands -->
-    <bean id="insert" class="com.aptu.sd.coffeemachine.shell.Insert"/>
-    <bean id="select" class="com.aptu.sd.coffeemachine.shell.Select"/>
-    <bean id="cancel" class="com.aptu.sd.coffeemachine.shell.Cancel"/>
-    <bean id="exit" class="com.aptu.sd.coffeemachine.shell.Exit"/>
-    <bean id="takecash" class="com.aptu.sd.coffeemachine.shell.TakeCash"/>
+    <bean id="insert" class="com.aptu.sd.coffeemachine.shell.Insert.class"/>
+    <bean id="select" class="com.aptu.sd.coffeemachine.shell.Select.class"/>
+    <bean id="cancel" class="com.aptu.sd.coffeemachine.shell.Cancel.class"/>
+    <bean id="exit" class="com.aptu.sd.coffeemachine.shell.Exit.class"/>
+    <bean id="takecash" class="com.aptu.sd.coffeemachine.shell.TakeCash.class"/>
 
     <bean id="shell"
           class="com.aptu.sd.coffeemachine.shell.Shell">
