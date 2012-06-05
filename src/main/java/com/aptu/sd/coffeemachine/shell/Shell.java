@@ -13,7 +13,8 @@ import java.util.*;
  * Date: 5/22/12, 11:41 PM
  */
 public class Shell {
-    private Map<String, Class<?>> commands = new HashMap<String, Class<?>>();
+    private Map<String, String> commands = new HashMap<String, String>();
+    private List<CommandName> initCommandNames;
     private VendingMachine machine;
     private VendingMachine toSwitchMachine;
 
@@ -22,9 +23,15 @@ public class Shell {
     }
 
     @Inject
-    public void setCommands(List<Class<?>> commands) {
-        for (Class<?> command : commands) {
-            this.commands.put(command.getSimpleName().toLowerCase(), command);
+    public void setCommands(List<String> commands) {
+        for (String  command : commands) {
+            this.commands.put(command.toLowerCase(), command);
+        }
+    }
+
+    public void setInitCommandNames(List<CommandName> commands) {
+        for (CommandName command : commands) {
+            this.commands.put(command.getName().toLowerCase(), command.getName());
         }
     }
 
@@ -42,7 +49,7 @@ public class Shell {
                 switchMachine();
                 continue;
             }
-            Class<?> command = commands.get(cmdName);
+            Command command = commandsFabric(cmdName);
             if (command == null) {
                 System.out.println("Unknown command: " + cmdName);
                 continue;
@@ -50,13 +57,13 @@ public class Shell {
 
             String[] args = Arrays.copyOfRange(split, 1, split.length);
             try {
-                Command cmd = (Command) command.getConstructors()[0].newInstance(machine);
-                cmd.execute(args);
+                command.execute(args);
             } catch (CommandParseException e) {
                 System.out.println("Invalid " + cmdName + " arguments: " + StringUtils.join(args, " "));
             } catch (Exception e) {
                 System.out.println("Can't create command. System error.");
             }
+
 
         }
     }
@@ -70,6 +77,18 @@ public class Shell {
         VendingMachine t = machine;
         machine = toSwitchMachine;
         toSwitchMachine = t;
+    }
+
+    private Command commandsFabric(String cmdName) {
+
+        try {
+            String name = commands.get(cmdName);
+            Class<?> command = Class.forName("com.aptu.sd.coffeemachine.shell." + name);
+            return (Command) command.getConstructors()[0].newInstance(machine);
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
 }

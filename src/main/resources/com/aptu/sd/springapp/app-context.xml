@@ -8,7 +8,6 @@
         <property name="price" value="4"/>
         <property name="count" value="10"/>
     </bean>
-
     <bean id="latte" class="com.aptu.sd.coffeemachine.machine.Product">
         <property name="name" value="latte"/>
         <property name="price" value="6"/>
@@ -24,19 +23,31 @@
                 <ref bean="latte"/>
             </list>
         </property>
+        
     </bean>
 
-    <!-- Commands -->
-    <bean id="insert" class="com.aptu.sd.coffeemachine.shell.Insert.class"/>
-    <bean id="select" class="com.aptu.sd.coffeemachine.shell.Select.class"/>
-    <bean id="cancel" class="com.aptu.sd.coffeemachine.shell.Cancel.class"/>
-    <bean id="exit" class="com.aptu.sd.coffeemachine.shell.Exit.class"/>
-    <bean id="takecash" class="com.aptu.sd.coffeemachine.shell.TakeCash.class"/>
-
+    <!-- Commands--> 
+    <bean id="insert" class="com.aptu.sd.coffeemachine.shell.CommandName"> 
+        <property name="name" value="Insert" /> 
+    </bean>
+    <bean id="select" class="com.aptu.sd.coffeemachine.shell.CommandName">
+        <property name="name" value="Select" />
+    </bean>
+    <bean id="cancel" class="com.aptu.sd.coffeemachine.shell.CommandName">
+        <property name="name" value="Cancel" />
+    </bean>
+    <bean id="exit" class="com.aptu.sd.coffeemachine.shell.CommandName">
+        <property name="name" value="Exit" />
+    </bean>
+    <bean id="takecash" class="com.aptu.sd.coffeemachine.shell.CommandName">
+        <property name="name" value="TakeCash" />
+    </bean>
+    
+    
     <bean id="shell"
           class="com.aptu.sd.coffeemachine.shell.Shell">
         <property name="machine" ref="machine"/>
-        <property name="commands">
+        <property name="initCommandNames">
             <list>
                 <ref bean="insert"/>
                 <ref bean="select"/>

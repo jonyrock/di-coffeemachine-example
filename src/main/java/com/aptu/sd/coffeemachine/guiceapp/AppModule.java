@@ -23,12 +23,12 @@ public class AppModule extends AbstractModule {
         List<Product> products = Arrays.asList(new Product("capuccino", 4, 10), new Product("latte", 6, 15));
         bind(new TypeLiteral<List<Product>>() {}).toInstance(products);
 
-        List<Class<?>> commands = new ArrayList<Class<?>>();
-        commands.add(Insert.class);
-        commands.add(Exit.class);
-        commands.add(Select.class);
-        commands.add(TakeCash.class);
-        commands.add(Cancel.class);
-        bind(new TypeLiteral<List<Class<?>>>() {}).toInstance(commands);
+        List<String> commands = new ArrayList<String>();
+        commands.add("Insert");
+        commands.add("Exit");
+        commands.add("Select");
+        commands.add("TakeCash");
+        commands.add("Cancel");
+        bind(new TypeLiteral<List<String>>() {}).toInstance(commands);
     }
 }
